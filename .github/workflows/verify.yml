@@ -1,0 +1,66 @@
+name: Verify submissions
+
+# CI-as-verifier: run the canonical checker on submitted point sets.
+# Object tier only (JSON is verified as DATA — safe on untrusted PRs from forks;
+# pull_request runs with a read-only token and no secrets). Do NOT switch to
+# pull_request_target or run submitted *code* here — generators run in the
+# platform sandbox, not in this workflow.
+
+on:
+  pull_request:
+    paths:
+      - 'submissions/**'
+  workflow_dispatch:
+    inputs:
+      file:
+        description: 'Path to a submission JSON to verify'
+        required: false
+        default: 'examples/example_valid.json'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run the checker
+        run: |
+          set +e
+          RECORD_N64=112
+          echo "## No-Isosceles — verification" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            files="${{ inputs.file }}"
+          else
+            files=$(ls submissions/*.json 2>/dev/null)
+          fi
+
+          if [ -z "$files" ]; then
+            echo "No submission JSON found." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          fail=0
+          for f in $files; do
+            [ -f "$f" ] || continue
+            out=$(python3 check.py "$f"); code=$?
+            echo "- \`$f\` → $out" >> "$GITHUB_STEP_SUMMARY"
+            if [ "$code" -ne 0 ]; then
+              fail=1
+            else
+              # extract score and flag record-beaters for n=64
+              n=$(python3 -c "import json,sys;print(json.load(open('$f'))['n'])")
+              s=$(echo "$out" | sed -n 's/.*score=\([0-9]*\).*/\1/p')
+              if [ "$n" = "64" ] && [ -n "$s" ] && [ "$s" -gt "$RECORD_N64" ]; then
+                echo "  - 🏆 **beats the n=64 record ($RECORD_N64)** — $s" >> "$GITHUB_STEP_SUMMARY"
+              fi
+            fi
+          done
+          exit $fail
