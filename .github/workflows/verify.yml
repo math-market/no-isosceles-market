@@ -32,7 +32,7 @@ jobs:
       - name: Run the checker
         run: |
           set +e
-          RECORD_N64=112
+          RECORD_N64=110   # PatternBoost 2024 (arXiv:2411.00566); 112 speculated but never constructed
           echo "## No-Isosceles — verification" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
 

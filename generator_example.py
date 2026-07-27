@@ -13,7 +13,7 @@ the generator tier end to end:
 
 It generalizes across n (a deterministic greedy), which is the whole point of the
 generator tier. A real generator-tier submission would beat this baseline and/or
-the published records (n=64 -> 112, n=100 -> 160); this one just shows the shape.
+the published records (n=64 -> 110, n=100 -> 160; PatternBoost 2024); this shows the shape.
 
 Invariant maintained while building: no chosen point is equidistant from two
 others (⇔ no isosceles triple, incl. collinear).  O(n^2 * |S|) time.

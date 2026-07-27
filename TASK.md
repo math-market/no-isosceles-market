@@ -16,7 +16,7 @@ Three distinct points `A, B, C ∈ S` are **forbidden** iff two of their three p
 `|AB|² = |AC|²` or `|AB|² = |BC|²` or `|AC|² = |BC|²`.
 Squared distances are integers ⇒ the test is **exact**, no floating point. `S` is *valid* iff it contains no forbidden triple.
 
-> ⚠️ **Convention lock.** We *include* degenerate/collinear isosceles (a point at the midpoint of two others counts). This matches the PatternBoost / AlphaEvolve record convention. A construction that is a "record" only under a *different* convention (e.g. non-degenerate only) does **not** count on this board.
+> ⚠️ **Convention lock.** We *include* degenerate/collinear isosceles (a point at the midpoint of two others counts). This matches the PatternBoost record convention — their definition is exactly `a,b,c ∈ S distinct ⟹ d(a,b) ≠ d(b,c)`, "possibly flat" triangles included. A construction that is a "record" only under a *different* convention (e.g. non-degenerate only) does **not** count on this board.
 
 ## How to submit
 
@@ -50,10 +50,10 @@ One board per n (e.g. n = 16, 32, 64, 100, 128, …), ranked by `|S|` (ties → 
 
 | n | Reference record | Source |
 |---|---|---|
-| 64 | **112** points | AlphaEvolve (2026); PatternBoost had 110 |
-| 100 | **160** points | PatternBoost (2024) |
+| 64 | **110** points | PatternBoost (2024) — 108 by classical search → **110** with a transformer loop; 112 *speculated* (Fig. 13) but never found |
+| 100 | **160** points | PatternBoost (2024) — 154 by classical search → **160** with a transformer loop; true optimum estimated ~176 |
 
-*(Records to verify against this exact convention before treating as the bar — see the convention lock. Growth rate of `f(n)` is OPEN; even an `n^{1.99}` upper bound is open — hence the proof tier is a real, hard target.)*
+*(Both records are from PatternBoost, arXiv:2411.00566, and use this exact convention. AlphaEvolve did **not** work this problem — do not attribute records to it. Growth rate of `f(n)` is OPEN; even an `n^{1.99}` upper bound is open — hence the proof tier is a real, hard target.)*
 
 ## Acceptance criteria (summary)
 
@@ -63,4 +63,4 @@ One board per n (e.g. n = 16, 32, 64, 100, 128, …), ranked by `|S|` (ties → 
 
 ## Sourcing
 
-Problem stated in our own words. Studied/records-held by PatternBoost (Charton–Ellenberg–Wagner–Williamson, 2024) and AlphaEvolve (2026) — **credit both** when posting; for a public launch, a courtesy note to the authors is worthwhile (they're also beta-tester candidates). The *problem* is not copyrightable; do not copy their prose/figures or code except per license. (See `../../problems-to-solicit.md` → Sourcing & attribution.)
+Problem stated in our own words. Asked independently by **Chai Wah Wu**, by **Ellenberg–Jain**, and possibly by **Erdős**; the records and framing follow **PatternBoost** (Charton–Ellenberg–Wagner–Williamson, 2024, arXiv:2411.00566). Credit PatternBoost when posting; for a public launch, a courtesy note to the authors is worthwhile (they're also beta-tester candidates). AlphaEvolve did **not** work this problem — do not credit it. The *problem* is not copyrightable; do not copy their prose/figures or code except per license. (See `../../problems-to-solicit.md` → Sourcing & attribution.)
