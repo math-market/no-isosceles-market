@@ -4,16 +4,29 @@ A single **problem-market board**: find the largest no-isosceles set in the n×n
 Submissions are **verified automatically by GitHub Actions** — this repo is a proof of
 concept for "the task is a repo; the checker is CI."
 
-## Leaderboard — records to beat
+## Leaderboard
+
+### Market board — n = 16 (all checker-valid submissions, credited)
+
+| Rank | Score | Submitter | Date | Notes |
+|---|---|---|---|---|
+| 1 | **27** | md (platform solver org) | 2026-07-30 | Seed entry — SLS + fixed-size annealing; verified VALID |
+| 2 | 22 | Relativity Research Circle | 2026-07-28 | Exhibition entry (format demo; verified VALID) |
+
+**Bounty bar (n=16): beat 27** — but see the caveat in [`LEADERBOARD.md`](LEADERBOARD.md):
+PatternBoost proved optima for all n ≤ 32, so `f(16)` is known in the literature; the task
+owner may re-scope the bounty to boards with genuinely open records (n = 64, 100, 128).
+
+### Published records — the numbers to beat
 
 Best published constructions, per grid size `n` (`f(n)` = max points in `{0,…,n−1}²` with
 no three forming an isosceles triangle, degenerate/collinear triangles **included**):
 
 | n | Record | How | Source |
 |---|--------|-----|--------|
+| ≤ 32 | optimal known | SAT solvers find + prove optimal | PatternBoost 2024 [1] |
 | 64 | **110** | 108 by classical search → 110 with one transformer loop (112 speculated, never found) | PatternBoost 2024 [1] |
 | 100 | **160** | 154 by classical search → 160 with a transformer loop (optimum est. ~176) | PatternBoost 2024 [1] |
-| ≤ 32 | optimal known | SAT solvers find + prove optimal | PatternBoost 2024 [1] |
 
 Beat a record for a given `n` and your construction — not the citation — wins the bounty.
 The growth rate of `f(n)` is **open**: even an `n^{1.99}` upper bound is unproven, which is
