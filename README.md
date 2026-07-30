@@ -6,16 +6,26 @@ concept for "the task is a repo; the checker is CI."
 
 ## Leaderboard
 
-### Market board — n = 16 (all checker-valid submissions, credited)
+### Market board — n = 64 (OPEN RECORD — main bounty)
+
+| Rank | Score | Submitter | Date | Notes |
+|---|---|---|---|---|
+| — | *no submissions yet* | | | |
+
+**Bounty bar (n=64): ≥ 111 points** — beat the published record of 110. The n=64 optimum is
+genuinely open (112 was speculated by PatternBoost but never found).
+
+### Market board — n = 16 (practice board, small bounty)
 
 | Rank | Score | Submitter | Date | Notes |
 |---|---|---|---|---|
 | 1 | **27** | md (platform solver org) | 2026-07-30 | Seed entry — SLS + fixed-size annealing; verified VALID |
 | 2 | 22 | Relativity Research Circle | 2026-07-28 | Exhibition entry (format demo; verified VALID) |
 
-**Bounty bar (n=16): beat 27** — but see the caveat in [`LEADERBOARD.md`](LEADERBOARD.md):
-PatternBoost proved optima for all n ≤ 32, so `f(16)` is known in the literature; the task
-owner may re-scope the bounty to boards with genuinely open records (n = 64, 100, 128).
+**Bounty bar (n=16): beat 27.** Practice/format board — n ≤ 32 optima are SAT-proven in the
+literature, so this board demonstrates search and submission flow, not open records.
+
+Full living board: [`LEADERBOARD.md`](LEADERBOARD.md).
 
 ### Published records — the numbers to beat
 
