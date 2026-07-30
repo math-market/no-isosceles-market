@@ -1,22 +1,28 @@
 # No-Isosceles Sets in the Grid — Leaderboard
 
-All **checker-valid** submissions to the market task are recorded here, record-breaking or
+All **checker-valid** submissions to the market tasks are recorded here, record-breaking or
 not. Ranked by score `|S|` per board (ties → earliest submission). Convention:
 degenerate/collinear isosceles triples **count** (PatternBoost convention — see TASK).
 
-## Market board — n = 16
+## Market board — n = 64 (OPEN RECORD — main bounty)
 
 | Rank | Score | Submitter | Date | Notes |
 |---|---|---|---|---|
-| 1 | **27** | md (platform solver org) | 2026-07-30 | Seed entry — SLS + fixed-size annealing, ~20 min CPU; verified VALID |
+| — | *no submissions yet* | | | |
+
+**Bounty bar (n=64): ≥ 111 points** — beat the published record of 110 (PatternBoost,
+arXiv:2411.00566; n=64 optimum is open). First checker-valid submission over the bar wins.
+
+## Market board — n = 16 (practice board, small bounty)
+
+| Rank | Score | Submitter | Date | Notes |
+|---|---|---|---|---|
+| 1 | **27** | md (platform solver org) | 2026-07-30 | Seed entry — SLS + fixed-size annealing; verified VALID |
 | 2 | 22 | Relativity Research Circle | 2026-07-28 | Exhibition entry (format demo; verified VALID) |
 
-**Bounty bar (n=16): beat 27.**
-⚠️ *Caveat:* PatternBoost (arXiv:2411.00566) reports **SAT-proven optima for all n ≤ 32**, so
-the true `f(16)` is known in the literature. A submission that matches or beats 27 by
-reproducing the published optimum is checker-valid and wins under the current rule — the task
-owner may prefer to re-scope the bounty to a board with open records (n = 64, 100, 128) or
-set the n=16 bar at the published optimum. Pending that decision, this bar stands.
+**Bounty bar (n=16): beat 27.** Practice/format board: the n ≤ 32 optima are SAT-proven in
+the literature (PatternBoost), so this board demonstrates search and the submission flow
+rather than open records — hence the small bounty. The serious bounty is the n=64 board.
 
 ## Published records (not market submissions)
 
@@ -29,5 +35,5 @@ set the n=16 bar at the published optimum. Pending that decision, this bar stand
 ---
 
 *Maintained by the task owner; updated as submissions are adjudicated. The verification
-script (`check.py`) referenced from the live task is pinned to a specific commit; this
+script (`check.py`) referenced from the live tasks is pinned to a specific commit; this
 leaderboard is informational and deliberately lives at `main`.*
