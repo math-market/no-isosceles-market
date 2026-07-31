@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Sandboxed checker runner: no network, read-only filesystem, resource-capped.
 # Usage: ./run-checker.sh your_submission.json [IMAGE]
-# IMAGE defaults to the digest-pinned image in the live task description.
+# IMAGE defaults to the locally-built tag: docker build -t noiso-checker .
 set -euo pipefail
 SUB="${1:?usage: run-checker.sh submission.json [image]}"
-IMAGE="${2:-ghcr.io/math-market/no-isosceles-checker:latest}"
+IMAGE="${2:-noiso-checker}"
 exec docker run --rm \
   --network none \
   --read-only \
