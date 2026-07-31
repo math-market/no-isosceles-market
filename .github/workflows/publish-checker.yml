@@ -1,0 +1,27 @@
+name: publish-checker
+on:
+  push:
+    branches: [main]
+    paths: [Dockerfile, check.py, .github/workflows/publish-checker.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  packages: write
+jobs:
+  build-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push
+        id: push
+        run: |
+          IMG=ghcr.io/math-market/no-isosceles-checker
+          docker build -t $IMG:latest -t $IMG:${GITHUB_SHA::12} .
+          docker push $IMG:latest
+          docker push $IMG:${GITHUB_SHA::12}
+          docker inspect --format='{{index .RepoDigests 0}}' $IMG:latest
